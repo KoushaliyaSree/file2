@@ -1,23 +1,29 @@
-# Use an official Node.js runtime as the base image
-FROM node:14-alpine
+# Stage 1: Build th React application
+FROM node:18.2 as build
 
-# Set the working directory in the container
+# Set the working directory
 WORKDIR /home/dell/file2
 
-# Copy package.json and package-lock.json files to the working directory
+# Copy package.json and package-lock.json
 COPY package*.json ./
 
 # Install dependencies
 RUN npm install
 
-# Copy the entire project directory to the working directory
+# Copy the application code
 COPY . .
 
-# Build the React app
+# Build the React application
 RUN npm run build
 
-# Expose port 3000 to the outside world
-EXPOSE 3000
+# Stage 2: Serve the built application using Nginx
+FROM nginx:alpine
 
-# Command to run the application
-CMD ["npm", "start"]
+# Copy the built app from Stage 1 into the Nginx image
+COPY --from=build /home/dell/file2 /usr/share/nginx/html
+
+# Expose port 80
+EXPOSE 80
+
+# Start Nginx server
+CMD ["nginx", "-g", "daemon off;"]
