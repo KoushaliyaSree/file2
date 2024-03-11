@@ -16,6 +16,18 @@ pipeline{
 			}
 		}
 
+		stage('Build Docker Image') {
+            steps {
+                script {
+                    // Define the Dockerfile location and image tag
+                    def dockerfile = '/home/dell/file2'
+                    def imageName = 'file2:latest'
+
+                    // Build the Docker image
+                    docker.build(imageName, "-f ${dockerfile} .")
+                }
+            }
+        }
        
 
 
