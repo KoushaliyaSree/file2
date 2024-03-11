@@ -20,7 +20,7 @@ pipeline{
             steps {
                 script {
                     // Define the Dockerfile location and image tag
-                    def dockerfile = '/home/dell/file2/Dockerfile'
+                    def dockerfile = '/var/lib/jenkins/workspace/file2job/Dockerfile'
                     def imageName = 'koushaliya/file22:latest'
 
                     // Build the Docker image
