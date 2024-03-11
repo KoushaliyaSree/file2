@@ -39,7 +39,7 @@ pipeline{
 					sh 'docker push koushaliya/file22'
                     
                 }
-            }
+            }//hello
     
 		}
 	}
