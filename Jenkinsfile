@@ -20,7 +20,7 @@ pipeline{
             steps {
                 script {
                     // Define the Dockerfile location and image tag
-                    def dockerfile = '/home/dell/file2'
+                    def dockerfile = '/home/dell/file2/Dockerfile'c
                     def imageName = 'koushaliya/22:latest'
 
                     // Build the Docker image
