@@ -21,7 +21,7 @@ pipeline{
                 script {
                     // Define the Dockerfile location and image tag
                     def dockerfile = '/home/dell/file2'
-                    def imageName = 'koushaliya/file2:latest'
+                    def imageName = 'koushaliya/22:latest'
 
                     // Build the Docker image
                     docker.build(imageName, "-f ${dockerfile} .")
