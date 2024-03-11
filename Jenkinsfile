@@ -2,7 +2,10 @@ pipeline{
 
 	agent any
 
-	
+	    environment {
+        DOCKER_CREDENTIALS_ID = 'docker hub'
+        DOCKER_IMAGE_NAME = 'koushaliya/file22'
+    }
 
 	stages {
 	    
@@ -13,7 +16,15 @@ pipeline{
 			}
 		}
 
-	
+        stage('Build') {
+
+            steps {
+
+            }
+        }
+
+
+
 	}
 
 	
