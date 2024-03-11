@@ -32,10 +32,12 @@ pipeline{
 		stage('Push Docker Image to Docker Hub') {
             steps {
                 script {
-                    // Push the Docker image to Docker Hub
-                    docker.withRegistry('https://registry.hub.docker.com', DOCKERHUB_CREDENTIALS) {
-                        docker.image("${DOCKER_IMAGE}").push()
-                    }
+                    withCredentials([string(credentialsId: 'dockerhubpwd', variable: 'dockerhubpwd')]) {
+					sh 'docker login -u koushaliya -p ${dockerhubpwd} '
+					}
+
+					sh 'docker push koushaliya/file22'
+                    
                 }
             }
     
