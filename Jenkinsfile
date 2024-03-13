@@ -29,7 +29,7 @@ pipeline{
                         -Dsonar.login=DemoSonarProject'
                 }
             }
-        }//hello
+        }//hello1
 
 
 		stage('Build Docker Image') {
