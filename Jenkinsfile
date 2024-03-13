@@ -29,7 +29,7 @@ pipeline{
                             -Dsonar.login=${env.SONAR_TOKEN}"
                     }
                 }
-            }
+            }//hello
         }
 
 
