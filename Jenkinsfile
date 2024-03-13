@@ -22,11 +22,11 @@ pipeline{
                 // Inject SonarQube environment variables
                 withSonarQubeEnv('sonar') {
                     // Run SonarQube Scanner
-                    sh 'mvn sonar \
+                    sh 'mvn sonar:sonar \
                         -Dsonar.projectKey=SonarProject \
                         -Dsonar.sources=/home/dell/file2/src \
                         -Dsonar.host.url=http://localhost:9000 \
-                        -Dsonar.login=SonarProject'
+                        -Dsonar.login=sqp_e784bbff0175ae1c168ce07ef2e7ee039d2c497f'
                 }
             }
         }//hello11
