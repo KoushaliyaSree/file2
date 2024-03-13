@@ -5,7 +5,7 @@ pipeline{
 	    environment {
         DOCKER_CREDENTIALS_ID = 'docker hub'
         DOCKER_IMAGE_NAME = 'koushaliya/file22'
-        SONAR_TOKEN = credentials('DemoSonarProject')
+        SONAR_TOKEN = credentials('SonarProject')
     }
 
 	stages {
@@ -20,13 +20,13 @@ pipeline{
             stage('SonarQube analysis') {
             steps {
                 // Inject SonarQube environment variables
-                withSonarQubeEnv('SonarQube') {
+                withSonarQubeEnv('sonar') {
                     // Run SonarQube Scanner
                     sh 'sonar-scanner \
-                        -Dsonar.projectKey=DemoSonarProject \
+                        -Dsonar.projectKey=SonarProject \
                         -Dsonar.sources=/home/dell/file2/src \
-                        -Dsonar.host.url=http://172.17.0.1:9000 \
-                        -Dsonar.login=DemoSonarProject'
+                        -Dsonar.host.url=http://localhost:9000 \
+                        -Dsonar.login=SonarProject'
                 }
             }
         }//hello1
