@@ -5,6 +5,7 @@ pipeline{
 	    environment {
         DOCKER_CREDENTIALS_ID = 'docker hub'
         DOCKER_IMAGE_NAME = 'koushaliya/file22'
+        PATH = "/opt/sonar-scanner/bin:$PATH"
         SONAR_TOKEN = credentials('SonarProject')
     }
 
@@ -22,7 +23,7 @@ pipeline{
                 // Inject SonarQube environment variables
                 withSonarQubeEnv('sonar') {
                     // Run SonarQube Scanner
-                    sh 'mvn clean verify sonar:sonar \
+                    sh 'mvn sonar:sonar \
                         -Dsonar.projectKey=SonarProject \
                         
                         -Dsonar.host.url=http://localhost:9000 \
