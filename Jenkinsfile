@@ -23,7 +23,7 @@ pipeline{
                 // Inject SonarQube environment variables
                 withSonarQubeEnv('sonar') {
                     // Run SonarQube Scanner
-                    sh 'mvn sonar:sonar \
+                    sh 'sonar-scanner\
                         -Dsonar.projectKey=SonarProject \
                         
                         -Dsonar.host.url=http://localhost:9000 \
