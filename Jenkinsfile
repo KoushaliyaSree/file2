@@ -22,7 +22,7 @@ pipeline{
                 // Inject SonarQube environment variables
                 withSonarQubeEnv('sonar') {
                     // Run SonarQube Scanner
-                    sh 'sonar-scanner \
+                    sh 'mvn sonar \
                         -Dsonar.projectKey=SonarProject \
                         -Dsonar.sources=/home/dell/file2/src \
                         -Dsonar.host.url=http://localhost:9000 \
