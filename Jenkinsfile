@@ -40,7 +40,7 @@ pipeline{
                     // Run SonarQube Scanner
                     sh 'sonar-scanner \
                         -Dsonar.projectKey=SonarProject \
-                        -Dsonar.sources=/home/dell/file2 \
+                        -Dsonar.sources=src/main \
                         -Dsonar.host.url=http://localhost:9000 \
                         -Dsonar.login=sqp_e784bbff0175ae1c168ce07ef2e7ee039d2c497f'
                 }
