@@ -18,7 +18,21 @@ pipeline{
 			}
 		}
 
-      
+
+    stage('SonarQube analysis') {
+            steps {
+                // Inject SonarQube environment variables
+                withSonarQubeEnv('sonar') {
+                    // Run SonarQube Scanner
+                    sh 'sonar-scanner \
+                        -Dsonar.projectKey=SonarProject \
+                        -Dsonar.sources=src/main.jsx \
+                        -Dsonar.host.url=http://localhost:9000 \
+                        -Dsonar.login=sqp_e784bbff0175ae1c168ce07ef2e7ee039d2c497f'
+                }
+            }
+        }//hello11
+
 
 		stage('Build Docker Image') {
             steps {
@@ -33,19 +47,7 @@ pipeline{
             }
         }
 
-              stage('SonarQube analysis') {
-            steps {
-                // Inject SonarQube environment variables
-                withSonarQubeEnv('sonar') {
-                    // Run SonarQube Scanner
-                    sh 'sonar-scanner \
-                        -Dsonar.projectKey=SonarProject \
-                        -Dsonar.sources=src/main \
-                        -Dsonar.host.url=http://localhost:9000 \
-                        -Dsonar.login=sqp_e784bbff0175ae1c168ce07ef2e7ee039d2c497f'
-                }
-            }
-        }//hello11
+          
 
 
 		stage('Push Docker Image to Docker Hub') {
