@@ -63,25 +63,7 @@ pipeline{
             }//hello
 		}
 
-        stage('Build React App') {
-            steps {
-                // Navigate to your React application directory
-                dir('/home/dell/file2') {
-                    // Install dependencies and build the React application
-                    sh 'npm install'
-                    sh 'npm run build'
-                }
-            }
-        }
-
-
-
-        stage('Deploy to NGINX') {
-            steps {
-                // Copy the build artifacts to the NGINX HTML directory
-                sh "cp -r ${BUILD_DIR}/* ${NGINX_HTML_DIR}/"
-            }
-        }
+        
   
 
 
