@@ -8,7 +8,7 @@ pipeline{
         PATH = "/opt/sonar-scanner/bin:$PATH"
         SONAR_TOKEN = credentials('SonarProject')
         NGINX_HTML_DIR = "/usr/share/nginx/html"
-        BUILD_DIR = "vite build" 
+        BUILD_DIR = "build" 
     }
 
 	stages {
@@ -62,6 +62,18 @@ pipeline{
                 }
             }//hello
 		}
+
+        stage('Build React App') {
+            steps {
+                // Navigate to your React application directory
+                dir('/home/dell/file2') {
+                    // Install dependencies and build the React application
+                    sh 'npm install'
+                    sh 'npm run build'
+                }
+            }
+        }
+
 
 
         stage('Deploy to NGINX') {
