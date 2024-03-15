@@ -8,7 +8,7 @@ pipeline{
         PATH = "/opt/sonar-scanner/bin:$PATH"
         SONAR_TOKEN = credentials('SonarProject')
         NGINX_HTML_DIR = "/usr/share/nginx/html"
-        BUILD_DIR = "build" 
+        BUILD_DIR = "vite build" 
     }
 
 	stages {
