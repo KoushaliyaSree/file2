@@ -7,6 +7,8 @@ pipeline{
         DOCKER_IMAGE_NAME = 'koushaliya/file22'
         PATH = "/opt/sonar-scanner/bin:$PATH"
         SONAR_TOKEN = credentials('SonarProject')
+        NGINX_HTML_DIR = "/usr/share/nginx/html"
+        BUILD_DIR = "build" 
     }
 
 	stages {
@@ -48,8 +50,6 @@ pipeline{
         }
 
           
-
-
 		stage('Push Docker Image to Docker Hub') {
             steps {
                 script {
@@ -61,10 +61,16 @@ pipeline{
                     
                 }
             }//hello
-    
 		}
 
-       
+
+        stage('Deploy to NGINX') {
+            steps {
+                // Copy the build artifacts to the NGINX HTML directory
+                sh "cp -r ${BUILD_DIR}/* ${NGINX_HTML_DIR}/"
+            }
+        }
+  
 
 
 	}
