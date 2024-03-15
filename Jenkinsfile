@@ -63,7 +63,14 @@ pipeline{
             }//hello
 		}
 
-        
+
+        stage('Trigger CD pipeline') {
+            steps {
+                script {
+                   build job:"CDfile2" , wait:true
+                }
+            }//hello
+		}
   
 
 
